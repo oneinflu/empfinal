@@ -36,7 +36,7 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -57,7 +57,7 @@ export default function MentorsPage() {
 
     const fetchMentors = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/mentor-profiles`);
+            const response = await authenticatedFetch(`/mentor-profiles`);
             if (!response.ok) throw new Error("Failed to fetch mentors");
             const data = await response.json();
             // Handle potentially different response structures
@@ -85,7 +85,7 @@ export default function MentorsPage() {
         if (mentorToDelete) {
             try {
                 // Guessing DELETE endpoint
-                const response = await fetch(`${API_BASE_URL}/admin/mentors/${mentorToDelete._id}`, {
+                const response = await authenticatedFetch(`/admin/mentors/${mentorToDelete._id}`, {
                     method: "DELETE",
                 });
 

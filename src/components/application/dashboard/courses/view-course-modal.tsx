@@ -14,7 +14,7 @@ interface ViewCourseModalProps {
     courseId: string | null;
 }
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 export const ViewCourseModal = ({ isOpen, onClose, courseId }: ViewCourseModalProps) => {
     const [course, setCourse] = useState<any>(null);
@@ -31,7 +31,7 @@ export const ViewCourseModal = ({ isOpen, onClose, courseId }: ViewCourseModalPr
     const fetchCourseDetails = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(`${API_BASE_URL}/admin/courses/${courseId}`);
+            const response = await authenticatedFetch(`/admin/courses/${courseId}`);
             if (response.ok) {
                 const data = await response.json();
                 setCourse(data);

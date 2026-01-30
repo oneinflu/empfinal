@@ -1,77 +1,179 @@
 "use client";
 
-import { BookOpen01, Check, Copy01, Cube01, HelpCircle } from "@untitledui/icons";
-import { Button } from "@/components/base/buttons/button";
-import { ButtonUtility } from "@/components/base/buttons/button-utility";
-import { UntitledLogoMinimal } from "@/components/foundations/logo/untitledui-logo-minimal";
-import { useClipboard } from "@/hooks/use-clipboard";
+import { HeroSection } from "@/components/marketing/hero";
+import { FeaturedSection } from "@/components/marketing/featured";
+import { TrustedBySection } from "@/components/marketing/trusted-by";
+import { ContentSlider, InfoCardProps } from "@/components/marketing/content-slider";
+import { CoursesSection } from "@/components/marketing/courses-section";
+import { Trophy01, Briefcase01, BookOpen01, Target05, CurrencyRupee, Clock, CheckCircle } from "@untitledui/icons";
+
+// Mock Data Generators
+const COMPETITIONS: InfoCardProps[] = [
+    {
+        id: 1,
+        title: "Strike & Reign",
+        subtitle: "Sri Guru Gobind Singh College of Commerce (SGGSCC), Delhi",
+        logo: "/logos/1.webp",
+        theme: "blue",
+        tags: [
+            { text: "Simulation Game +4", icon: <Target05 className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Online" },
+            { text: "Free" }
+        ]
+    },
+    {
+        id: 2,
+        title: "Omnia'26",
+        subtitle: "Xavier School of Management (XLRI), Delhi",
+        logo: "/logos/2.webp",
+        theme: "green",
+        tags: [
+             { text: "Prizes worth ₹25,000", icon: <CurrencyRupee className="w-3.5 h-3.5" />, className: "text-green-700" },
+        ],
+        meta: [
+            { text: "Online" }
+        ]
+    },
+    {
+        id: 3,
+        title: "The Hive Strategy Conclave",
+        subtitle: "Hive School of Business",
+        logo: "/logos/3.webp",
+        theme: "purple",
+        tags: [
+            { text: "Business Plan +3", icon: <Briefcase01 className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Online" }
+        ]
+    },
+     {
+        id: 4,
+        title: "HUL L.I.M.E. Season 16",
+        subtitle: "Hindustan Unilever Limited (HUL)",
+        logo: "/logos/4.webp",
+        theme: "orange",
+        tags: [
+            { text: "Case Study", icon: <BookOpen01 className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Online" },
+            { text: "PPI Opportunity" }
+        ]
+    }
+];
+
+const INTERNSHIPS: InfoCardProps[] = [
+    {
+        id: 1,
+        title: "Software Development Intern",
+        subtitle: "Microsoft India",
+        logo: "/logos/5.webp",
+        theme: "blue",
+        tags: [
+            { text: "Stipend ₹1.2L/mo", icon: <CurrencyRupee className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Bangalore" },
+            { text: "2 Months" }
+        ]
+    },
+    {
+        id: 2,
+        title: "Product Design Intern",
+        subtitle: "Cred",
+        logo: "/logos/6.webp",
+        theme: "purple",
+        tags: [
+            { text: "Stipend ₹80,000/mo", icon: <CurrencyRupee className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Bangalore" },
+            { text: "6 Months" }
+        ]
+    },
+    {
+        id: 3,
+        title: "Marketing Intern",
+        subtitle: "Zomato",
+        logo: "/logos/7.webp",
+        theme: "orange",
+        tags: [
+            { text: "Stipend ₹45,000/mo", icon: <CurrencyRupee className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Gurgaon" },
+            { text: "3 Months" }
+        ]
+    }
+];
+
+const JOBS: InfoCardProps[] = [
+    {
+        id: 1,
+        title: "SDE-II (Backend)",
+        subtitle: "Flipkart",
+        logo: "/logos/8.webp",
+        theme: "blue",
+        tags: [
+            { text: "₹24-35 LPA", icon: <CurrencyRupee className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Bangalore" },
+            { text: "Full Time" }
+        ]
+    },
+    {
+        id: 2,
+        title: "Senior Product Manager",
+        subtitle: "Razorpay",
+        logo: "/logos/9.webp",
+        theme: "green",
+        tags: [
+            { text: "₹40-55 LPA", icon: <CurrencyRupee className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Bangalore" },
+            { text: "Full Time" }
+        ]
+    }
+];
 
 export const HomeScreen = () => {
-    const clipboard = useClipboard();
-
     return (
-        <div className="flex h-dvh flex-col">
-            <div className="flex min-h-0 flex-1 flex-col items-center justify-center px-4 md:px-8">
-                <div className="relative flex size-28 items-center justify-center">
-                    <UntitledLogoMinimal className="size-10" />
-                </div>
+        <main className="flex min-h-screen flex-col bg-white">
+            <HeroSection />
+            <FeaturedSection />
+            <TrustedBySection />
+            
+           
 
-                <h1 className="max-w-3xl text-center text-display-sm font-semibold text-primary">Empedia</h1>
+            <ContentSlider 
+                title="Internships" 
+                description="Apply to premium internships at top companies."
+                viewAllLink="/internships"
+                items={INTERNSHIPS}
+            />
 
-                <p className="mt-2 max-w-xl text-center text-lg text-tertiary">
-                    Get started by using existing components that came with this starter kit or add new ones:
-                </p>
+            <ContentSlider 
+                title="Jobs" 
+                description="Explore exclusive job opportunities for you."
+                viewAllLink="/jobs"
+                items={JOBS}
+            />
 
-                <div className="relative mt-6 flex h-10 items-center rounded-lg border border-secondary bg-secondary">
-                    <code className="px-3 font-mono text-secondary">npx untitledui@latest add</code>
-
-                    <hr className="h-10 w-px bg-border-secondary" />
-
-                    <ButtonUtility
-                        color="tertiary"
-                        size="sm"
-                        tooltip="Copy"
-                        className="mx-1"
-                        icon={clipboard.copied ? Check : Copy01}
-                        onClick={() => clipboard.copy("npx untitledui@latest add")}
-                    />
-                </div>
-
-                <div className="mt-6 flex items-center gap-3">
-                    <Button
-                        href="https://www.untitledui.com/react/docs/introduction"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="link-color"
-                        size="lg"
-                        iconLeading={BookOpen01}
-                    >
-                        Docs
-                    </Button>
-                    <div className="h-px w-4 bg-brand-solid" />
-                    <Button
-                        href="https://www.untitledui.com/react/resources/icons"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="link-color"
-                        size="lg"
-                        iconLeading={Cube01}
-                    >
-                        Icons
-                    </Button>
-                    <div className="h-px w-4 bg-brand-solid" />
-                    <Button
-                        href="https://github.com/untitleduico/react/issues"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="link-color"
-                        size="lg"
-                        iconLeading={HelpCircle}
-                    >
-                        Help
-                    </Button>
-                </div>
-            </div>
-        </div>
+            <CoursesSection />
+             <ContentSlider 
+                title="Competitions" 
+                description="Uncover the most talked-about competitions today."
+                viewAllLink="/competitions"
+                items={COMPETITIONS}
+            />
+            
+            {/* Additional content can be added here in the future */}
+           
+        </main>
     );
 };

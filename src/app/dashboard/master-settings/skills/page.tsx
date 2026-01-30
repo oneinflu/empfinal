@@ -19,7 +19,7 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 interface Skill {
     _id: string;
@@ -52,7 +52,7 @@ export default function SkillsPage() {
     const fetchSkills = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(`${API_BASE_URL}/skills`);
+            const response = await authenticatedFetch(`/skills`);
             if (response.ok) {
                 const data = await response.json();
                 setSkills(data);
@@ -88,7 +88,7 @@ export default function SkillsPage() {
                     parent: data.parent || undefined // API expects ID or undefined
                 };
                 
-                const response = await fetch(`${API_BASE_URL}/skills/${editingSkill._id}`, {
+                const response = await authenticatedFetch(`/skills/${editingSkill._id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
@@ -104,7 +104,7 @@ export default function SkillsPage() {
                     parent: data.parent || undefined
                 };
                 
-                const response = await fetch(`${API_BASE_URL}/skills`, {
+                const response = await authenticatedFetch(`/skills`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
@@ -123,7 +123,7 @@ export default function SkillsPage() {
         if (!skillToDelete) return;
         
         try {
-            const response = await fetch(`${API_BASE_URL}/skills/${skillToDelete._id}`, {
+            const response = await authenticatedFetch(`/skills/${skillToDelete._id}`, {
                 method: "DELETE",
             });
             

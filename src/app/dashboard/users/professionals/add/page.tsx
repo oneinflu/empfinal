@@ -13,6 +13,7 @@ import { MultiSelect } from "@/components/base/select/multi-select";
 import { SelectItem } from "@/components/base/select/select-item";
 import type { SelectItemType } from "@/components/base/select/select";
 import { cx } from "@/utils/cx";
+import { authenticatedFetch } from "@/utils/api";
 
 const STEPS = [
     { id: 1, title: "Personal Info", description: "Basic details" },
@@ -21,8 +22,6 @@ const STEPS = [
     { id: 4, title: "Certifications", description: "Certifications" },
     { id: 5, title: "Skills", description: "Skills & Resume" },
 ];
-
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
 
 export default function AddProfessionalPage() {
     const router = useRouter();
@@ -42,7 +41,7 @@ export default function AddProfessionalPage() {
 
     const fetchSkills = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/skills`);
+            const response = await authenticatedFetch(`/skills`);
             if (response.ok) {
                 const data = await response.json();
                 const formattedSkills = data.map((skill: any) => ({
@@ -177,7 +176,7 @@ export default function AddProfessionalPage() {
                 resumeUrl: formData.resumeUrl 
             };
             
-            const response = await fetch(`${API_BASE_URL}/admin/professionals/add`, {
+            const response = await authenticatedFetch(`/admin/professionals/add`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),

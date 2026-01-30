@@ -10,6 +10,7 @@ import { SelectItem } from "@/components/base/select/select-item";
 import { FeaturedIcon } from "@/components/foundations/featured-icon/featured-icon";
 import { cx } from "@/utils/cx";
 import { TextArea } from "@/components/base/textarea/textarea";
+import { authenticatedFetch } from "@/utils/api";
 
 const STEPS = [
     { id: 1, title: "Company Info", description: "Basic details" },
@@ -53,7 +54,7 @@ export default function EditCompanyPage() {
     const fetchCompanyDetails = async () => {
         try {
             setIsFetching(true);
-            const response = await fetch(`${API_BASE_URL}/company-profiles/${id}`);
+            const response = await authenticatedFetch(`/company-profiles/${id}`);
             if (!response.ok) throw new Error("Failed to fetch company details");
             const data = await response.json();
             

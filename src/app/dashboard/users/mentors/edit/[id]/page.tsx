@@ -9,14 +9,13 @@ import { Select } from "@/components/base/select/select";
 import { SelectItem } from "@/components/base/select/select-item";
 import { FeaturedIcon } from "@/components/foundations/featured-icon/featured-icon";
 import { cx } from "@/utils/cx";
+import { authenticatedFetch } from "@/utils/api";
 
 const STEPS = [
     { id: 1, title: "Basic Info", description: "Personal details" },
     { id: 2, title: "Professional", description: "Work experience" },
     { id: 3, title: "Details", description: "Profile details" },
 ];
-
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
 
 export default function EditMentorPage() {
     const router = useRouter();
@@ -70,7 +69,7 @@ export default function EditMentorPage() {
             
             // Actually, for now, let's fetch all and find the one. This is safer if we don't know the exact ID endpoint structure
             // but we know /mentor-profiles returns the list.
-            const response = await fetch(`${API_BASE_URL}/mentor-profiles`);
+            const response = await authenticatedFetch(`/mentor-profiles`);
             if (!response.ok) throw new Error("Failed to fetch mentor details");
             const data = await response.json();
             const mentors = Array.isArray(data) ? data : (data.data || data.mentors || []);
@@ -145,7 +144,7 @@ export default function EditMentorPage() {
             // Using the same pattern as delete: /admin/mentors/:id
             // If not, it might be POST to add with ID? Unlikely.
             // I'll use PUT /admin/mentors/:id
-            const response = await fetch(`${API_BASE_URL}/admin/mentors/${id}`, {
+            const response = await authenticatedFetch(`/admin/mentors/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),

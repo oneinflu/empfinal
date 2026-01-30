@@ -24,8 +24,7 @@ import { SelectItem } from "@/components/base/select/select-item";
 import { MultiSelectBase } from "@/components/base/select/multi-select";
 import { FeaturedIcon } from "@/components/foundations/featured-icon/featured-icon";
 import { cx } from "@/utils/cx";
-
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 const COURSE_LEVELS = [
     { id: "Beginner", label: "Beginner" },
@@ -95,7 +94,7 @@ export default function AddCoursePage() {
 
     const fetchCompanies = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/company-profiles`);
+            const response = await authenticatedFetch(`/company-profiles`);
             if (response.ok) {
                 const data = await response.json();
                 const list = Array.isArray(data) ? data : (data.data || data.companies || []);
@@ -111,7 +110,7 @@ export default function AddCoursePage() {
 
     const fetchSkills = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/skills`);
+            const response = await authenticatedFetch(`/skills`);
             if (response.ok) {
                 const data = await response.json();
                 const list = Array.isArray(data) ? data : (data.data || []);
@@ -230,7 +229,7 @@ export default function AddCoursePage() {
             data.append('targetAudience', JSON.stringify(formData.targetAudience));
             data.append('skills', JSON.stringify(selectedSkills.items.map(s => s.id)));
 
-            const response = await fetch(`${API_BASE_URL}/admin/courses/add`, {
+            const response = await authenticatedFetch(`/admin/courses/add`, {
                 method: "POST",
                 body: data,
                 // Do NOT set Content-Type header for multipart/form-data

@@ -13,7 +13,7 @@ interface ViewJobModalProps {
     jobId: string | null;
 }
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 export const ViewJobModal = ({ isOpen, onClose, jobId }: ViewJobModalProps) => {
     const [job, setJob] = useState<any>(null);
@@ -30,7 +30,7 @@ export const ViewJobModal = ({ isOpen, onClose, jobId }: ViewJobModalProps) => {
     const fetchJobDetails = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(`${API_BASE_URL}/admin/jobs/${jobId}`);
+            const response = await authenticatedFetch(`/admin/jobs/${jobId}`);
             if (!response.ok) throw new Error("Failed to fetch job details");
             const data = await response.json();
             setJob(data);

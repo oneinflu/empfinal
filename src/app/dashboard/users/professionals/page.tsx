@@ -51,7 +51,8 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
+
 const ITEMS_PER_PAGE = 5;
 
 export default function ProfessionalsPage() {
@@ -74,7 +75,7 @@ export default function ProfessionalsPage() {
 
     const fetchProfessionals = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/admin/professionals`);
+            const response = await authenticatedFetch(`/admin/professionals`);
             if (!response.ok) throw new Error("Failed to fetch professionals");
             const data = await response.json();
             const professionalsData = Array.isArray(data) ? data : (data.data || data.professionals || []);
@@ -106,7 +107,7 @@ export default function ProfessionalsPage() {
         if (!professionalToDelete) return;
         
         try {
-            const response = await fetch(`${API_BASE_URL}/admin/professionals/${professionalToDelete._id}`, {
+            const response = await authenticatedFetch(`/admin/professionals/${professionalToDelete._id}`, {
                 method: "DELETE",
             });
             

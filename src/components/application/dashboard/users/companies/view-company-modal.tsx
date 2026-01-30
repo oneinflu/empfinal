@@ -42,7 +42,7 @@ interface ViewCompanyModalProps {
     companyId: string | null;
 }
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 export const ViewCompanyModal = ({ isOpen, onClose, companyId }: ViewCompanyModalProps) => {
     const [company, setCompany] = useState<CompanyProfile | null>(null);
@@ -59,7 +59,7 @@ export const ViewCompanyModal = ({ isOpen, onClose, companyId }: ViewCompanyModa
     const fetchCompanyDetails = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(`${API_BASE_URL}/company-profiles/${companyId}`);
+            const response = await authenticatedFetch(`/company-profiles/${companyId}`);
             if (!response.ok) throw new Error("Failed to fetch company details");
             const data = await response.json();
             setCompany(data);

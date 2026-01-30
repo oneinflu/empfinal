@@ -19,7 +19,7 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 interface Category {
     _id: string;
@@ -52,7 +52,7 @@ export default function CategoryPage() {
     const fetchCategories = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(`${API_BASE_URL}/categories`);
+            const response = await authenticatedFetch(`/categories`);
             if (response.ok) {
                 const data = await response.json();
                 setCategories(data);
@@ -88,7 +88,7 @@ export default function CategoryPage() {
                     parentId: data.parent || undefined // API expects ID or undefined
                 };
                 
-                const response = await fetch(`${API_BASE_URL}/categories/${editingCategory._id}`, {
+                const response = await authenticatedFetch(`/categories/${editingCategory._id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
@@ -104,7 +104,7 @@ export default function CategoryPage() {
                     parentId: data.parent || undefined
                 };
                 
-                const response = await fetch(`${API_BASE_URL}/categories`, {
+                const response = await authenticatedFetch(`/categories`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
@@ -123,7 +123,7 @@ export default function CategoryPage() {
         if (!categoryToDelete) return;
         
         try {
-            const response = await fetch(`${API_BASE_URL}/categories/${categoryToDelete._id}`, {
+            const response = await authenticatedFetch(`/categories/${categoryToDelete._id}`, {
                 method: "DELETE",
             });
             

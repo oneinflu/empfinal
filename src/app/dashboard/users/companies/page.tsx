@@ -53,7 +53,8 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
+
 const ITEMS_PER_PAGE = 5;
 
 export default function CompaniesPage() {
@@ -77,7 +78,7 @@ export default function CompaniesPage() {
 
     const fetchCompanies = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/company-profiles`);
+            const response = await authenticatedFetch(`/company-profiles`);
             if (!response.ok) throw new Error("Failed to fetch companies");
             const data = await response.json();
             const companiesData = Array.isArray(data) ? data : (data.data || data.companies || []);
@@ -110,13 +111,13 @@ export default function CompaniesPage() {
         
         try {
             // Assuming endpoint structure
-            const response = await fetch(`${API_BASE_URL}/admin/companies/${companyToDelete._id}`, {
+            const response = await authenticatedFetch(`/admin/companies/${companyToDelete._id}`, {
                 method: "DELETE",
             });
             
             if (!response.ok) {
                  // Fallback try
-                 const response2 = await fetch(`${API_BASE_URL}/company-profiles/${companyToDelete._id}`, {
+                 const response2 = await authenticatedFetch(`/company-profiles/${companyToDelete._id}`, {
                     method: "DELETE",
                 });
                 if (!response2.ok) throw new Error("Failed to delete company");

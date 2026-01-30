@@ -22,6 +22,8 @@ export const viewport: Viewport = {
     colorScheme: "light dark",
 };
 
+import { MarketingLayoutWrapper } from "@/components/marketing/layout-wrapper";
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -32,7 +34,9 @@ export default function RootLayout({
             <body className={cx(inter.variable, "bg-primary antialiased")}>
                 <RouteProvider>
                     <Theme>
-                        {children}
+                        <MarketingLayoutWrapper>
+                            {children}
+                        </MarketingLayoutWrapper>
                         <ThemeToggleFab />
                     </Theme>
                 </RouteProvider>

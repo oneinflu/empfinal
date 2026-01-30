@@ -10,8 +10,7 @@ import {
     BookOpen01 
 } from "@untitledui/icons";
 import { FeaturedIcon } from "@/components/foundations/featured-icon/featured-icon";
-
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 export default function DashboardPage() {
     const router = useRouter();
@@ -32,19 +31,21 @@ export default function DashboardPage() {
                     professionalsRes, 
                     mentorsRes, 
                     companiesRes, 
-                    jobsRes
+                    jobsRes,
+                    coursesRes
                 ] = await Promise.all([
-                    fetch(`${API_BASE_URL}/admin/students`),
-                    fetch(`${API_BASE_URL}/admin/professionals`),
-                    fetch(`${API_BASE_URL}/mentor-profiles`),
-                    fetch(`${API_BASE_URL}/company-profiles`),
-                    fetch(`${API_BASE_URL}/admin/jobs`)
+                    authenticatedFetch(`/admin/students`),
+                    authenticatedFetch(`/admin/professionals`),
+                    authenticatedFetch(`/mentor-profiles`),
+                    authenticatedFetch(`/company-profiles`),
+                    authenticatedFetch(`/admin/jobs`),
+                    authenticatedFetch(`/admin/courses`)
                 ]);
 
                 const getCount = async (res: Response) => {
                     if (!res.ok) return 0;
                     const data = await res.json();
-                    const list = Array.isArray(data) ? data : (data.data || data.students || data.professionals || data.mentors || data.companies || data.jobs || []);
+                    const list = Array.isArray(data) ? data : (data.data || data.students || data.professionals || data.mentors || data.companies || data.jobs || data.courses || []);
                     return list.length;
                 };
 
@@ -53,6 +54,7 @@ export default function DashboardPage() {
                 const mentorsCount = await getCount(mentorsRes);
                 const companiesCount = await getCount(companiesRes);
                 const jobsCount = await getCount(jobsRes);
+                const coursesCount = await getCount(coursesRes);
 
                 setStats({
                     students: studentsCount,
@@ -60,7 +62,7 @@ export default function DashboardPage() {
                     mentors: mentorsCount,
                     companies: companiesCount,
                     jobs: jobsCount,
-                    courses: 0 // Not implemented yet
+                    courses: coursesCount
                 });
 
             } catch (error) {

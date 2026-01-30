@@ -24,8 +24,7 @@ import { MultiSelectBase } from "@/components/base/select/multi-select";
 import { Toggle } from "@/components/base/toggle/toggle";
 import { FeaturedIcon } from "@/components/foundations/featured-icon/featured-icon";
 import { cx } from "@/utils/cx";
-
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 const JOB_TYPES = [
     { id: "job", label: "Full-time Job" },
@@ -134,7 +133,7 @@ export default function AddJobPage() {
 
     const fetchCompanies = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/company-profiles`);
+            const response = await authenticatedFetch(`/company-profiles`);
             if (response.ok) {
                 const data = await response.json();
                 const list = Array.isArray(data) ? data : (data.data || data.companies || []);
@@ -151,7 +150,7 @@ export default function AddJobPage() {
 
     const fetchSkills = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/skills`);
+            const response = await authenticatedFetch(`/skills`);
             if (response.ok) {
                 const data = await response.json();
                 const list = Array.isArray(data) ? data : (data.data || []);
@@ -239,7 +238,7 @@ export default function AddJobPage() {
                 minExperience: Number(formData.minExperience)
             };
 
-            const response = await fetch(`${API_BASE_URL}/admin/jobs/add`, {
+            const response = await authenticatedFetch(`/admin/jobs/add`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),

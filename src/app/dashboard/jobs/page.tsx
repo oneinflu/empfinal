@@ -38,7 +38,8 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
+
 const ITEMS_PER_PAGE = 5;
 
 export default function JobsPage() {
@@ -61,7 +62,7 @@ export default function JobsPage() {
 
     const fetchJobs = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/admin/jobs`);
+            const response = await authenticatedFetch(`/admin/jobs`);
             if (!response.ok) throw new Error("Failed to fetch jobs");
             const data = await response.json();
             const jobsData = Array.isArray(data) ? data : (data.data || data.jobs || []);
@@ -99,7 +100,7 @@ export default function JobsPage() {
             // Assuming DELETE method on /admin/jobs/:id based on standard REST
             // But prompt didn't explicitly specify DELETE endpoint.
             // Professionals used DELETE /admin/professionals/:id. Assuming same pattern.
-            const response = await fetch(`${API_BASE_URL}/admin/jobs/${jobToDelete._id}`, {
+            const response = await authenticatedFetch(`/admin/jobs/${jobToDelete._id}`, {
                 method: "DELETE",
             });
 

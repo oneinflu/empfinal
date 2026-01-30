@@ -30,7 +30,7 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app";
+import { authenticatedFetch } from "@/utils/api";
 
 const initialTeams: TeamMember[] = [];
 
@@ -66,7 +66,7 @@ export default function TeamsPage() {
 
     const fetchTeams = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/team`);
+            const response = await authenticatedFetch(`/team`);
             if (!response.ok) throw new Error("Failed to fetch teams");
             const data = await response.json();
             const teamsData = Array.isArray(data) ? data : (data.data || data.teams || []);
@@ -94,7 +94,7 @@ export default function TeamsPage() {
     const handleSaveTeam = async (data: { name: string; email: string; role: string; password?: string }) => {
         try {
             if (editingTeam) {
-                const response = await fetch(`${API_BASE_URL}/team/${editingTeam._id}`, {
+                const response = await authenticatedFetch(`/team/${editingTeam._id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data),
@@ -104,7 +104,7 @@ export default function TeamsPage() {
                 
                 await fetchTeams();
             } else {
-                const response = await fetch(`${API_BASE_URL}/team`, {
+                const response = await authenticatedFetch(`/team`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data),
@@ -122,7 +122,7 @@ export default function TeamsPage() {
     const confirmDelete = async () => {
         if (teamToDelete) {
             try {
-                const response = await fetch(`${API_BASE_URL}/team/${teamToDelete._id}`, {
+                const response = await authenticatedFetch(`/team/${teamToDelete._id}`, {
                     method: "DELETE",
                 });
 

@@ -9,14 +9,13 @@ import { Select } from "@/components/base/select/select";
 import { SelectItem } from "@/components/base/select/select-item";
 import { FeaturedIcon } from "@/components/foundations/featured-icon/featured-icon";
 import { cx } from "@/utils/cx";
+import { authenticatedFetch } from "@/utils/api";
 
 const STEPS = [
     { id: 1, title: "Basic Info", description: "Personal details" },
     { id: 2, title: "Professional", description: "Work experience" },
     { id: 3, title: "Details", description: "Profile details" },
 ];
-
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
 
 export default function AddMentorPage() {
     const router = useRouter();
@@ -79,7 +78,7 @@ export default function AddMentorPage() {
                 rating: Number(formData.rating),
             };
             
-            const response = await fetch(`${API_BASE_URL}/admin/mentors/add`, {
+            const response = await authenticatedFetch(`/admin/mentors/add`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),

@@ -58,7 +58,7 @@ interface ViewProfessionalModalProps {
     professionalId: string | null;
 }
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 export const ViewProfessionalModal = ({ isOpen, onClose, professionalId }: ViewProfessionalModalProps) => {
     const [professional, setProfessional] = useState<ProfessionalProfile | null>(null);
@@ -75,7 +75,7 @@ export const ViewProfessionalModal = ({ isOpen, onClose, professionalId }: ViewP
     const fetchProfessionalDetails = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(`${API_BASE_URL}/admin/professionals/${professionalId}`);
+            const response = await authenticatedFetch(`/admin/professionals/${professionalId}`);
             if (!response.ok) {
                  throw new Error("Failed to fetch professional details");
             }

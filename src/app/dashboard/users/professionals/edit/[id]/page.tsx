@@ -13,6 +13,7 @@ import { MultiSelect } from "@/components/base/select/multi-select";
 import { SelectItem } from "@/components/base/select/select-item";
 import type { SelectItemType } from "@/components/base/select/select";
 import { cx } from "@/utils/cx";
+import { API_BASE_URL, authenticatedFetch } from "@/utils/api";
 
 const STEPS = [
     { id: 1, title: "Personal Info", description: "Basic details" },
@@ -21,8 +22,6 @@ const STEPS = [
     { id: 4, title: "Certifications", description: "Certifications" },
     { id: 5, title: "Skills", description: "Skills & Resume" },
 ];
-
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
 
 export default function EditProfessionalPage() {
     const router = useRouter();
@@ -48,7 +47,7 @@ export default function EditProfessionalPage() {
 
     const fetchSkills = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/skills`);
+            const response = await authenticatedFetch(`/skills`);
             if (response.ok) {
                 const data = await response.json();
                 const formattedSkills = data.map((skill: any) => ({
@@ -66,13 +65,13 @@ export default function EditProfessionalPage() {
     const fetchProfessional = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(`${API_BASE_URL}/admin/professionals/${id}`);
+            const response = await authenticatedFetch(`/admin/professionals/${id}`);
             if (response.ok) {
                 const data = await response.json();
                 populateForm(data);
             } else {
                  // Fallback
-                 const response2 = await fetch(`${API_BASE_URL}/student-profiles/${id}`); // Assuming maybe similar structure or just error
+                 const response2 = await authenticatedFetch(`/student-profiles/${id}`); // Assuming maybe similar structure or just error
                  if (response2.ok) {
                     const data = await response2.json();
                     populateForm(data);

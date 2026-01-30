@@ -44,7 +44,7 @@ interface ViewStudentModalProps {
     studentId: string | null;
 }
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
 
 export const ViewStudentModal = ({ isOpen, onClose, studentId }: ViewStudentModalProps) => {
     const [student, setStudent] = useState<StudentProfile | null>(null);
@@ -61,10 +61,10 @@ export const ViewStudentModal = ({ isOpen, onClose, studentId }: ViewStudentModa
     const fetchStudentDetails = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(`${API_BASE_URL}/admin/students/${studentId}`);
+            const response = await authenticatedFetch(`/admin/students/${studentId}`);
             if (!response.ok) {
                  // Fallback try
-                 const response2 = await fetch(`${API_BASE_URL}/student-profiles/${studentId}`);
+                 const response2 = await authenticatedFetch(`/student-profiles/${studentId}`);
                  if (!response2.ok) throw new Error("Failed to fetch student details");
                  const data = await response2.json();
                  setStudent(data);

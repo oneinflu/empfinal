@@ -47,7 +47,8 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
+
 const ITEMS_PER_PAGE = 5;
 
 export default function StudentsPage() {
@@ -70,7 +71,7 @@ export default function StudentsPage() {
 
     const fetchStudents = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/admin/students`);
+            const response = await authenticatedFetch(`/admin/students`);
             if (!response.ok) throw new Error("Failed to fetch students");
             const data = await response.json();
             const studentsData = Array.isArray(data) ? data : (data.data || data.students || []);
@@ -102,13 +103,13 @@ export default function StudentsPage() {
         if (!studentToDelete) return;
         
         try {
-            const response = await fetch(`${API_BASE_URL}/admin/students/${studentToDelete._id}`, {
+            const response = await authenticatedFetch(`/admin/students/${studentToDelete._id}`, {
                 method: "DELETE",
             });
             
             if (!response.ok) {
                  // Fallback try
-                 const response2 = await fetch(`${API_BASE_URL}/student-profiles/${studentToDelete._id}`, {
+                 const response2 = await authenticatedFetch(`/student-profiles/${studentToDelete._id}`, {
                     method: "DELETE",
                 });
                 if (!response2.ok) throw new Error("Failed to delete student");

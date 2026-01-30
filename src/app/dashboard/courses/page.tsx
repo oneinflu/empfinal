@@ -51,7 +51,8 @@ const columns = [
     { name: "", id: "actions" },
 ];
 
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
+import { authenticatedFetch } from "@/utils/api";
+
 const ITEMS_PER_PAGE = 5;
 
 export default function CoursesPage() {
@@ -74,7 +75,7 @@ export default function CoursesPage() {
 
     const fetchCourses = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/admin/courses`);
+            const response = await authenticatedFetch(`/admin/courses`);
             if (!response.ok) throw new Error("Failed to fetch courses");
             const data = await response.json();
             const coursesData = Array.isArray(data) ? data : (data.data || data.courses || []);
@@ -107,7 +108,7 @@ export default function CoursesPage() {
         if (!courseToDelete) return;
 
         try {
-            const response = await fetch(`${API_BASE_URL}/admin/courses/${courseToDelete._id}`, {
+            const response = await authenticatedFetch(`/admin/courses/${courseToDelete._id}`, {
                 method: "DELETE",
             });
 

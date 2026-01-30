@@ -9,6 +9,7 @@ import { Select } from "@/components/base/select/select";
 import { SelectItem } from "@/components/base/select/select-item";
 import { FeaturedIcon } from "@/components/foundations/featured-icon/featured-icon";
 import { cx } from "@/utils/cx";
+import { authenticatedFetch } from "@/utils/api";
 import { TextArea } from "@/components/base/textarea/textarea";
 
 const STEPS = [
@@ -16,8 +17,6 @@ const STEPS = [
     { id: 2, title: "Details", description: "Profile details" },
     { id: 3, title: "Online Presence", description: "Website & Socials" },
 ];
-
-const API_BASE_URL = "https://empnodeapis-6f68i.ondigitalocean.app/api";
 
 export default function AddCompanyPage() {
     const router = useRouter();
@@ -83,7 +82,7 @@ export default function AddCompanyPage() {
                 socialLinks: socialLinks
             };
             
-            const response = await fetch(`${API_BASE_URL}/admin/companies/add`, {
+            const response = await authenticatedFetch(`/admin/companies/add`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
