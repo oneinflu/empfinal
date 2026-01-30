@@ -7,8 +7,9 @@ import { MarketingFooter } from "./footer";
 export const MarketingLayoutWrapper = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
     const isDashboard = pathname?.startsWith("/dashboard");
+    const isAuthPage = pathname === "/login" || pathname === "/register";
 
-    if (isDashboard) {
+    if (isDashboard || isAuthPage) {
         return <>{children}</>;
     }
 
