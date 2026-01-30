@@ -76,14 +76,7 @@ export const LoginSlider = () => {
                         </div>
 
                         {/* Text */}
-                        <div className="w-full pt-8 pb-4 text-center z-10">
-                            <h3 className="text-3xl font-bold text-white mb-2">
-                                {currentSlide.title}
-                            </h3>
-                            <p className="text-green-50 text-lg font-medium">
-                                {currentSlide.subtitle}
-                            </p>
-                        </div>
+                     
                     </motion.div>
                 </AnimatePresence>
             </div>
