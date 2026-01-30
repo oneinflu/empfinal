@@ -5,66 +5,10 @@ import { FeaturedSection } from "@/components/marketing/featured";
 import { TrustedBySection } from "@/components/marketing/trusted-by";
 import { ContentSlider, InfoCardProps } from "@/components/marketing/content-slider";
 import { CoursesSection } from "@/components/marketing/courses-section";
-import { Trophy01, Briefcase01, BookOpen01, Target05, CurrencyRupee, Clock, CheckCircle } from "@untitledui/icons";
+import { MentorshipSection } from "@/components/marketing/mentorship-section";
+import { CurrencyRupee } from "@untitledui/icons";
 
 // Mock Data Generators
-const COMPETITIONS: InfoCardProps[] = [
-    {
-        id: 1,
-        title: "Strike & Reign",
-        subtitle: "Sri Guru Gobind Singh College of Commerce (SGGSCC), Delhi",
-        logo: "/logos/1.webp",
-        theme: "blue",
-        tags: [
-            { text: "Simulation Game +4", icon: <Target05 className="w-3.5 h-3.5" /> },
-        ],
-        meta: [
-            { text: "Online" },
-            { text: "Free" }
-        ]
-    },
-    {
-        id: 2,
-        title: "Omnia'26",
-        subtitle: "Xavier School of Management (XLRI), Delhi",
-        logo: "/logos/2.webp",
-        theme: "green",
-        tags: [
-             { text: "Prizes worth ₹25,000", icon: <CurrencyRupee className="w-3.5 h-3.5" />, className: "text-green-700" },
-        ],
-        meta: [
-            { text: "Online" }
-        ]
-    },
-    {
-        id: 3,
-        title: "The Hive Strategy Conclave",
-        subtitle: "Hive School of Business",
-        logo: "/logos/3.webp",
-        theme: "purple",
-        tags: [
-            { text: "Business Plan +3", icon: <Briefcase01 className="w-3.5 h-3.5" /> },
-        ],
-        meta: [
-            { text: "Online" }
-        ]
-    },
-     {
-        id: 4,
-        title: "HUL L.I.M.E. Season 16",
-        subtitle: "Hindustan Unilever Limited (HUL)",
-        logo: "/logos/4.webp",
-        theme: "orange",
-        tags: [
-            { text: "Case Study", icon: <BookOpen01 className="w-3.5 h-3.5" /> },
-        ],
-        meta: [
-            { text: "Online" },
-            { text: "PPI Opportunity" }
-        ]
-    }
-];
-
 const INTERNSHIPS: InfoCardProps[] = [
     {
         id: 1,
@@ -107,6 +51,20 @@ const INTERNSHIPS: InfoCardProps[] = [
             { text: "Gurgaon" },
             { text: "3 Months" }
         ]
+    },
+    {
+        id: 4,
+        title: "Business Analyst Intern",
+        subtitle: "Deloitte",
+        logo: "/logos/1.webp",
+        theme: "blue",
+        tags: [
+            { text: "Stipend ₹35,000/mo", icon: <CurrencyRupee className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Hyderabad" },
+            { text: "6 Months" }
+        ]
     }
 ];
 
@@ -138,6 +96,34 @@ const JOBS: InfoCardProps[] = [
             { text: "Bangalore" },
             { text: "Full Time" }
         ]
+    },
+    {
+        id: 3,
+        title: "Frontend Engineer",
+        subtitle: "Swiggy",
+        logo: "/logos/2.webp",
+        theme: "orange",
+        tags: [
+            { text: "₹18-28 LPA", icon: <CurrencyRupee className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Remote" },
+            { text: "Full Time" }
+        ]
+    },
+    {
+        id: 4,
+        title: "Data Scientist",
+        subtitle: "Amazon",
+        logo: "/logos/3.webp",
+        theme: "purple",
+        tags: [
+            { text: "₹30-45 LPA", icon: <CurrencyRupee className="w-3.5 h-3.5" /> },
+        ],
+        meta: [
+            { text: "Bangalore" },
+            { text: "Full Time" }
+        ]
     }
 ];
 
@@ -164,13 +150,9 @@ export const HomeScreen = () => {
                 items={JOBS}
             />
 
+            <MentorshipSection />
+
             <CoursesSection />
-             <ContentSlider 
-                title="Competitions" 
-                description="Uncover the most talked-about competitions today."
-                viewAllLink="/competitions"
-                items={COMPETITIONS}
-            />
             
             {/* Additional content can be added here in the future */}
            

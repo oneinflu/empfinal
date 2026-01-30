@@ -23,26 +23,10 @@ const CATEGORIES = [
         bg: "group-hover:bg-purple-50"
     },
     { 
-        title: "Competitions", 
-        icon: "/icons/competitions.avif", 
-        href: "/competitions",
-        description: "Compete & win big",
-        accent: "group-hover:text-orange-600",
-        bg: "group-hover:bg-orange-50"
-    },
-    { 
-        title: "Mock Tests", 
-        icon: "/icons/mock.avif", 
-        href: "/practice",
-        description: "Practice to perfection",
-        accent: "group-hover:text-green-600",
-        bg: "group-hover:bg-green-50"
-    },
-    { 
-        title: "Mock Interviews", 
+        title: "Mentorships", 
         icon: "/icons/mock-interviews.avif", 
-        href: "/practice",
-        description: "Ace your interviews",
+        href: "/mentorships",
+        description: "Learn from experts",
         accent: "group-hover:text-pink-600",
         bg: "group-hover:bg-pink-50"
     },
@@ -87,7 +71,7 @@ export const HeroSection = () => {
 
                 {/* Categories Grid/Scroll */}
                 <div className="relative mx-auto max-w-6xl">
-                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                         {CATEGORIES.map((category) => (
                             <Link 
                                 key={category.title}

@@ -98,55 +98,56 @@ export function TopMentors() {
             </div>
         </div>
 
-        {/* Carousel */}
+        {/* List */}
         <div 
             ref={scrollContainerRef}
-            className="flex gap-5 overflow-x-auto pb-8 pt-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 snap-x"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {MENTORS.map((mentor) => (
-            <div 
-                key={mentor.id} 
-                className="group relative flex-none w-[260px] bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 snap-center overflow-hidden"
-            >
-                <div className="p-5 flex flex-col items-center">
-                    {/* Compact Avatar */}
-                    <div className="relative mb-4">
-                        <img 
-                            src={mentor.image} 
-                            alt={mentor.name} 
-                            className="w-16 h-16 rounded-full object-cover ring-2 ring-gray-50 group-hover:ring-blue-50 transition-all"
-                        />
-                        <div className="absolute -bottom-1 -right-1 bg-white px-1.5 py-0.5 rounded-full shadow-sm border border-gray-100 flex items-center gap-0.5">
-                             <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
-                             <span className="text-[10px] font-bold text-gray-900">{mentor.rating}</span>
+            {MENTORS.map((mentor) => (
+                <Link 
+                    href={`/mentorships/${mentor.id}`} 
+                    key={mentor.id}
+                    className="min-w-[280px] md:min-w-[320px] snap-start group"
+                >
+                    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl hover:border-blue-100 transition-all duration-300 h-full flex flex-col">
+                        <div className="relative h-48 overflow-hidden">
+                            <img 
+                                src={mentor.image} 
+                                alt={mentor.name} 
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold shadow-sm">
+                                <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+                                {mentor.rating}
+                            </div>
                         </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="text-center w-full mb-4">
-                        <h3 className="text-base font-bold text-gray-900 mb-1 truncate">{mentor.name}</h3>
-                        <p className="text-xs font-medium text-blue-600 mb-2 truncate">{mentor.role} @{mentor.company}</p>
                         
-                        <div className="flex items-center justify-center gap-1.5 text-xs text-gray-500 bg-gray-50 py-1.5 px-3 rounded-md w-full">
-                            <GraduationHat01 className="w-3.5 h-3.5 flex-shrink-0" />
-                            <span className="truncate">{mentor.education}</span>
+                        <div className="p-5 flex-1 flex flex-col">
+                            <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{mentor.name}</h3>
+                            <p className="text-sm text-gray-600 mb-4">{mentor.role} at {mentor.company}</p>
+                            
+                            <div className="space-y-2 mb-6 flex-1">
+                                <div className="flex items-center gap-2 text-xs text-gray-500">
+                                    <GraduationHat01 className="w-4 h-4 text-gray-400" />
+                                    <span className="truncate">{mentor.education}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-gray-500">
+                                    <Briefcase01 className="w-4 h-4 text-gray-400" />
+                                    <span>{mentor.reviews} sessions completed</span>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                                <span className="text-sm font-semibold text-gray-900">View Profile</span>
+                                <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    <ArrowRight className="w-4 h-4" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    {/* Premium Button */}
-                    <button className="w-full py-2 rounded-lg text-sm font-semibold transition-all duration-200 border border-gray-200 text-gray-700 bg-white hover:bg-gray-900 hover:text-white hover:border-gray-900">
-                        View Profile
-                    </button>
-                </div>
-            </div>
-          ))}
-        </div>
-        
-        <div className="mt-4 flex justify-center md:hidden">
-            <Link href="/mentors" className="text-sm font-semibold text-gray-900 hover:underline">
-                View all mentors
-            </Link>
+                </Link>
+            ))}
         </div>
       </div>
     </section>

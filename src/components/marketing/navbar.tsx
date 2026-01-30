@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { SearchLg, Briefcase01, XClose } from "@untitledui/icons";
+import { SearchLg, Briefcase01, XClose, Lock01 } from "@untitledui/icons";
 import { Button } from "@/components/base/buttons/button";
 import { Input } from "@/components/base/input/input";
 import { UntitledLogoMinimal } from "@/components/foundations/logo/untitledui-logo-minimal";
@@ -101,11 +101,11 @@ export const MarketingNavbar = () => {
                         <Button 
                             color="secondary" 
                             size="md" 
-                            iconLeading={Briefcase01}
+                            iconLeading={Lock01}
                             className="hidden sm:flex rounded-full"
-                            href="/for-business"
+                            href="/register"
                         >
-                            For Business
+                            Register
                         </Button>
                         <Button 
                             color="primary" 

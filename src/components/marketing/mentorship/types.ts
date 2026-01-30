@@ -27,6 +27,7 @@ export interface Mentorship {
         duration: number; // minutes
         price: number;
         currency: string;
+        pricingType: "per_session" | "per_hour";
         description: string;
     }[];
 

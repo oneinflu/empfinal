@@ -36,27 +36,39 @@ const getMentorshipData = (slug: string): Mentorship => {
         services: [
             {
                 id: "s1",
-                title: "1:1 Career Mentorship",
-                duration: 45,
-                price: 2000,
+                title: "Quick 1:1 Catch-up",
+                duration: 15,
+                price: 500,
                 currency: "₹",
-                description: "Deep dive into your career goals, challenges, and create a roadmap for growth."
+                pricingType: "per_session",
+                description: "Quick chat to ask specific questions or get a resume glance."
             },
             {
                 id: "s2",
-                title: "Portfolio Review",
-                duration: 60,
-                price: 2500,
+                title: "Detailed Career Mentorship",
+                duration: 45,
+                price: 2000,
                 currency: "₹",
-                description: "Detailed feedback on your portfolio case studies and presentation style."
+                pricingType: "per_session",
+                description: "Deep dive into your career goals, challenges, and create a roadmap for growth."
             },
             {
                 id: "s3",
-                title: "Mock Interview",
+                title: "Mock Interview Practice",
                 duration: 60,
                 price: 3000,
                 currency: "₹",
+                pricingType: "per_session",
                 description: "Simulated design interview with real-time feedback and improvement tips."
+            },
+            {
+                id: "s4",
+                title: "Long-term Mentorship",
+                duration: 60,
+                price: 5000,
+                currency: "₹",
+                pricingType: "per_hour",
+                description: "Ongoing support for your projects. Billed hourly for flexible scheduling."
             }
         ],
 

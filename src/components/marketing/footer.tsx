@@ -20,97 +20,57 @@ const SOCIAL_LINKS = [
     { name: "YouTube", icon: <SocialYouTubeIcon />, href: "#" },
 ];
 
+const FUTURE_LINKS = [
+    // Products
+    { label: "Brand & Engage", href: "#" },
+    { label: "Source", href: "#" },
+    { label: "Screen", href: "#" },
+    { label: "Assess", href: "#" },
+    { label: "Interview", href: "#" },
+    { label: "Hiring Automation", href: "#" },
+    // Participate
+    { label: "Assessments", href: "#" },
+    { label: "Hackathons", href: "#" },
+    { label: "Workshops & Webinars", href: "#" },
+    { label: "Conferences", href: "#" },
+    { label: "Cultural Events", href: "#" },
+    { label: "College Festivals", href: "#" },
+    // Practice
+    { label: "5 Days Interview Prep", href: "#" },
+    { label: "Code & Ace Hiring Assessments", href: "#" },
+    { label: "100-Day of Coding Sprint", href: "#" },
+    // Others
+    { label: "Rewards Program", href: "#" },
+    { label: "Refer & Earn", href: "#" },
+    { label: "Campus Ambassador Program", href: "#" },
+    { label: "Request a Feature", href: "#" },
+    // Our Properties
+    { label: "Talent Awards 2026", href: "#" },
+    { label: "Talent Meet 2026", href: "#" },
+    { label: "Talent Report 2025", href: "#" },
+    { label: "Education Loan EMI Calculator", href: "#" },
+    { label: "Igniters Club", href: "#" },
+    { label: "Online Quizzing Festival", href: "#" },
+];
+
 const FOOTER_COLUMNS = [
     {
-        title: "Products",
+        title: "Platform",
         links: [
-            { label: "Brand & Engage", href: "#" },
-            { label: "Source", href: "#" },
-            { label: "Screen", href: "#" },
-            { label: "Assess", href: "#" },
-            { label: "Interview", href: "#" },
-            { label: "Hiring Automation", href: "#" },
-        ],
-    },
-    {
-        title: "Participate",
-        links: [
-            { label: "Competitions & Challenges", href: "#" },
-            { label: "Assessments", href: "#" },
-            { label: "Hackathons", href: "#" },
-            { label: "Workshops & Webinars", href: "#" },
-            { label: "Conferences", href: "#" },
-            { label: "Cultural Events", href: "#" },
-            { label: "College Festivals", href: "#" },
-        ],
-    },
-    {
-        title: "Learn",
-        links: [
+            { label: "Internships", href: "/internships" },
+            { label: "Jobs", href: "/jobs" },
+            { label: "Mentorships", href: "/mentorships" },
             { label: "Courses", href: "/courses" },
-            { label: "Articles", href: "#" },
-            { label: "Blog Series", href: "#" },
-            { label: "Workshops", href: "#" },
+            { label: "Competitions", href: "/competitions" },
         ],
     },
     {
-        title: "Practice",
-        links: [
-            { label: "5 Days Interview Prep", href: "#" },
-            { label: "Code & Ace Hiring Assessments", href: "#" },
-            { label: "100-Day of Coding Sprint", href: "#" },
-        ],
-    },
-    {
-        title: "Mentorship",
-        links: [
-            { label: "Be a Mentor", href: "#" },
-            { label: "Explore Mentors", href: "#" },
-            { label: "Mentorship FAQs", href: "#" },
-            { label: "Mentorship Blogs", href: "#" },
-        ],
-    },
-    {
-        title: "Apply",
-        links: [
-            { label: "Internships", href: "#" },
-            { label: "Jobs", href: "#" },
-            { label: "Scholarships", href: "#" },
-        ],
-    },
-    {
-        title: "Others",
+        title: "Company",
         links: [
             { label: "About Us", href: "#" },
             { label: "Careers", href: "#" },
-            { label: "Life at Empedia", href: "#" },
-            { label: "FAQs", href: "#" },
-            { label: "Branding Guidelines", href: "#" },
-            { label: "Rewards Program", href: "#" },
-            { label: "Refer & Earn", href: "#" },
-            { label: "Campus Ambassador Program", href: "#" },
-            { label: "Request a Feature", href: "#" },
-        ],
-    },
-    {
-        title: "Our Properties",
-        links: [
-            { label: "Talent Awards 2026", href: "#" },
-            { label: "Talent Meet 2026", href: "#" },
-            { label: "Talent Report 2025", href: "#" },
-            { label: "Education Loan EMI Calculator", href: "#" },
-            { label: "Igniters Club", href: "#" },
-            { label: "Online Quizzing Festival", href: "#" },
-        ],
-    },
-    {
-        title: "For Business",
-        links: [
-            { label: "Clientele", href: "#" },
-            { label: "Partner With Us", href: "#" },
-            { label: "Partners", href: "#" },
-            { label: "Testimonials", href: "#" },
-            { label: "Case Studies", href: "#" },
+            { label: "Contact Us", href: "#" },
+            { label: "Blog", href: "#" },
         ],
     },
     {
@@ -119,6 +79,14 @@ const FOOTER_COLUMNS = [
             { label: "Terms & Conditions", href: "#" },
             { label: "Privacy Policy", href: "#" },
             { label: "Sitemap", href: "#" },
+        ],
+    },
+    {
+        title: "For Business",
+        links: [
+            { label: "Hire Talent", href: "#" },
+            { label: "Post a Job", href: "#" },
+            { label: "Partners", href: "#" },
         ],
     },
 ];

@@ -8,53 +8,43 @@ import { cx } from "@/utils/cx";
 const FEATURED_ITEMS = [
     {
         id: 1,
-        title: "L&T OutThink 2026: PPIs and Cash Prize worth INR 2.25 Lakh!",
+        title: "Senior Backend Engineer - Core Platform",
         image: "/featured/1.webp",
-        tags: ["Online", "Free"],
-        company: "L&T",
-        registered: "12,453",
-        daysLeft: "12 days left",
-        prizes: "₹2.25 Lakhs"
+        tags: ["Remote", "Full Time"],
+        company: "Google",
+        registered: "1,240",
+        daysLeft: "Apply Now",
+        prizes: "₹45-60 LPA"
     },
     {
         id: 2,
-        title: "Spark-Wars 4.0 - Global Databricks Hackathon",
+        title: "Product Design Internship 2026",
         image: "/featured/2.png",
-        tags: ["Online", "Free"],
-        company: "Databricks",
-        registered: "8,921",
-        daysLeft: "5 days left",
-        prizes: "₹10 Lakhs"
+        tags: ["Bangalore", "Internship"],
+        company: "Cred",
+        registered: "3,500",
+        daysLeft: "Apply Now",
+        prizes: "₹80k/mo"
     },
     {
         id: 3,
-        title: "Hero Campus Challenge Season 10: PPIs & Prizes Worth ₹25 Lakhs",
+        title: "1:1 Mentorship with Principal Engineer",
         image: "/featured/3.webp",
-        tags: ["Online", "Free"],
-        company: "Hero MotoCorp",
-        registered: "25,102",
-        daysLeft: "20 days left",
-        prizes: "₹25 Lakhs"
+        tags: ["Online", "Mentorship"],
+        company: "Microsoft Ex-Alumni",
+        registered: "850",
+        daysLeft: "Book Now",
+        prizes: "₹3000/hr"
     },
     {
         id: 4,
-        title: "Polycab Hiring Challenge 2026",
+        title: "Marketing & Growth Lead",
         image: "/featured/1.webp",
-        tags: ["In Office", "Free"],
-        company: "Polycab",
-        registered: "5,300",
-        daysLeft: "2 days left",
-        prizes: "PPIs"
-    },
-     {
-        id: 5,
-        title: "TechGig Code Gladiators 2026",
-        image: "/featured/3.webp",
-        tags: ["Online", "Free"],
-        company: "TechGig",
-        registered: "1.2L",
-        daysLeft: "45 days left",
-        prizes: "₹50 Lakhs"
+        tags: ["Mumbai", "Full Time"],
+        company: "Dream11",
+        registered: "2,100",
+        daysLeft: "Apply Now",
+        prizes: "₹25-35 LPA"
     }
 ];
 
