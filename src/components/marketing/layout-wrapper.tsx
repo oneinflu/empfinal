@@ -8,8 +8,9 @@ export const MarketingLayoutWrapper = ({ children }: { children: React.ReactNode
     const pathname = usePathname();
     const isDashboard = pathname?.startsWith("/dashboard");
     const isAuthPage = pathname === "/login" || pathname === "/register";
+    const isLessonPage = pathname?.startsWith("/courses/") && pathname?.includes("/lesson/");
 
-    if (isDashboard || isAuthPage) {
+    if (isDashboard || isAuthPage || isLessonPage) {
         return <>{children}</>;
     }
 

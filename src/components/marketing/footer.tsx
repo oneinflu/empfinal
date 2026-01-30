@@ -47,7 +47,7 @@ const FOOTER_COLUMNS = [
     {
         title: "Learn",
         links: [
-            { label: "Courses", href: "#" },
+            { label: "Courses", href: "/courses" },
             { label: "Articles", href: "#" },
             { label: "Blog Series", href: "#" },
             { label: "Workshops", href: "#" },

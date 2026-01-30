@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageHero } from "@/components/marketing/page-hero";
 import { CodeBrowser, Briefcase01, Settings01, Announcement01, Dataflow01, LayersThree01, Palette, Users01 } from "@untitledui/icons";
 import { FilterBar } from "@/components/marketing/filter-bar";
@@ -32,58 +33,66 @@ export default function InternshipsPage() {
                         <FilterBar />
                         
                         <div className="mt-6 flex flex-col gap-4">
-                            <InternshipCard 
-                                title="Tech Blog Writer Internship"
-                                company="Kaizenstat"
-                                logoUrl="/logos/1.webp"
-                                type="Full Time"
-                                location="Remote"
-                                locationType="Remote"
-                                tags={["Python", "Technical Communication", "Content Writing", "SEO"]}
-                                pills={["Undergraduate", "Postgraduate", "Engineering Students"]}
-                                postedDate="Jan 30, 2026"
-                                daysLeft={14}
-                            />
+                            <Link href="/internships/tech-blog-writer-internship">
+                                <InternshipCard 
+                                    title="Tech Blog Writer Internship"
+                                    company="Kaizenstat"
+                                    logoUrl="/logos/1.webp"
+                                    type="Full Time"
+                                    location="Remote"
+                                    locationType="Remote"
+                                    tags={["Python", "Technical Communication", "Content Writing", "SEO"]}
+                                    pills={["Undergraduate", "Postgraduate", "Engineering Students"]}
+                                    postedDate="Jan 30, 2026"
+                                    daysLeft={14}
+                                />
+                            </Link>
                             
-                            <InternshipCard 
-                                title="AI Engineer Internship"
-                                company="Bridge-it Inc"
-                                logoUrl="/logos/2.webp"
-                                type="Full Time"
-                                location="Remote"
-                                locationType="Remote"
-                                tags={["Data Wrangling", "Generative Adversarial Networks (GANs)", "Python", "TensorFlow"]}
-                                pills={["Undergraduate", "Postgraduate", "Engineering Students"]}
-                                postedDate="Jan 29, 2026"
-                                daysLeft={12}
-                                salary="15 K - 18 K/Month"
-                            />
+                            <Link href="/internships/ai-engineer-internship">
+                                <InternshipCard 
+                                    title="AI Engineer Internship"
+                                    company="Bridge-it Inc"
+                                    logoUrl="/logos/2.webp"
+                                    type="Full Time"
+                                    location="Remote"
+                                    locationType="Remote"
+                                    tags={["Data Wrangling", "Generative Adversarial Networks (GANs)", "Python", "TensorFlow"]}
+                                    pills={["Undergraduate", "Postgraduate", "Engineering Students"]}
+                                    postedDate="Jan 29, 2026"
+                                    daysLeft={12}
+                                    salary="15 K - 18 K/Month"
+                                />
+                            </Link>
                             
-                            <InternshipCard 
-                                title="Full Stack Developer Internship"
-                                company="Elgrace"
-                                logoUrl="/logos/3.webp"
-                                type="Full Time"
-                                location="Delhi, Gurgaon"
-                                locationType="On-site"
-                                tags={["Machine Learning Concepts", "Python", "API Development (REST)", "React"]}
-                                pills={["Undergraduate", "Postgraduate", "Engineering Students"]}
-                                postedDate="Jan 30, 2026"
-                                daysLeft={14}
-                            />
+                            <Link href="/internships/full-stack-developer-internship">
+                                <InternshipCard 
+                                    title="Full Stack Developer Internship"
+                                    company="Elgrace"
+                                    logoUrl="/logos/3.webp"
+                                    type="Full Time"
+                                    location="Delhi, Gurgaon"
+                                    locationType="On-site"
+                                    tags={["Machine Learning Concepts", "Python", "API Development (REST)", "React"]}
+                                    pills={["Undergraduate", "Postgraduate", "Engineering Students"]}
+                                    postedDate="Jan 30, 2026"
+                                    daysLeft={14}
+                                />
+                            </Link>
                             
-                            <InternshipCard 
-                                title="Financial Advisor Internship"
-                                company="Jayat Consulting Services"
-                                logoUrl="/logos/4.webp"
-                                type="Full Time"
-                                location="Hyderabad"
-                                locationType="Hybrid"
-                                tags={["Communication Skills", "Customer Service", "Finance", "Sales"]}
-                                pills={["Undergraduate", "Postgraduate", "Engineering Students"]}
-                                postedDate="Jan 30, 2026"
-                                daysLeft={13}
-                            />
+                            <Link href="/internships/financial-advisor-internship">
+                                <InternshipCard 
+                                    title="Financial Advisor Internship"
+                                    company="Jayat Consulting Services"
+                                    logoUrl="/logos/4.webp"
+                                    type="Full Time"
+                                    location="Hyderabad"
+                                    locationType="Hybrid"
+                                    tags={["Communication Skills", "Customer Service", "Finance", "Sales"]}
+                                    pills={["Undergraduate", "Postgraduate", "Engineering Students"]}
+                                    postedDate="Jan 30, 2026"
+                                    daysLeft={13}
+                                />
+                            </Link>
                         </div>
 
                         <div className="mt-8">

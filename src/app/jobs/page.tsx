@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageHero } from "@/components/marketing/page-hero";
 import { CodeBrowser, LayersThree01, Palette, CurrencyRupee, Announcement01, Briefcase01, Users01, FileShield01 } from "@untitledui/icons";
 import { FilterBar } from "@/components/marketing/filter-bar";
@@ -32,65 +33,73 @@ export default function JobsPage() {
                         <FilterBar />
                         
                         <div className="mt-6 flex flex-col gap-4">
-                            <JobCard 
-                                title="Senior Frontend Engineer"
-                                company="TechFlow Systems"
-                                logoUrl="/logos/1.webp"
-                                type="Full Time"
-                                location="Bangalore"
-                                locationType="Hybrid"
-                                experience="3-5 Years"
-                                tags={["React", "TypeScript", "Next.js", "Tailwind CSS"]}
-                                pills={["Engineering", "Senior Level"]}
-                                postedDate="Jan 30, 2026"
-                                daysLeft={28}
-                                salary="₹25L - ₹35L / Year"
-                            />
+                            <Link href="/jobs/senior-frontend-engineer">
+                                <JobCard 
+                                    title="Senior Frontend Engineer"
+                                    company="TechFlow Systems"
+                                    logoUrl="/logos/1.webp"
+                                    type="Full Time"
+                                    location="Bangalore"
+                                    locationType="Hybrid"
+                                    experience="3-5 Years"
+                                    tags={["React", "TypeScript", "Next.js", "Tailwind CSS"]}
+                                    pills={["Engineering", "Senior Level"]}
+                                    postedDate="Jan 30, 2026"
+                                    daysLeft={28}
+                                    salary="₹25L - ₹35L / Year"
+                                />
+                            </Link>
                             
-                            <JobCard 
-                                title="Product Manager"
-                                company="InnovateAI"
-                                logoUrl="/logos/2.webp"
-                                type="Full Time"
-                                location="Gurgaon"
-                                locationType="On-site"
-                                experience="2-4 Years"
-                                tags={["Product Strategy", "Agile", "User Research", "Data Analytics"]}
-                                pills={["Product", "Mid Level"]}
-                                postedDate="Jan 29, 2026"
-                                daysLeft={25}
-                                salary="₹18L - ₹28L / Year"
-                            />
+                            <Link href="/jobs/product-manager">
+                                <JobCard 
+                                    title="Product Manager"
+                                    company="InnovateAI"
+                                    logoUrl="/logos/2.webp"
+                                    type="Full Time"
+                                    location="Gurgaon"
+                                    locationType="On-site"
+                                    experience="2-4 Years"
+                                    tags={["Product Strategy", "Agile", "User Research", "Data Analytics"]}
+                                    pills={["Product", "Mid Level"]}
+                                    postedDate="Jan 29, 2026"
+                                    daysLeft={25}
+                                    salary="₹18L - ₹28L / Year"
+                                />
+                            </Link>
                             
-                            <JobCard 
-                                title="UX/UI Designer"
-                                company="Creative Pulse"
-                                logoUrl="/logos/3.webp"
-                                type="Contract"
-                                location="Remote"
-                                locationType="Remote"
-                                experience="1-3 Years"
-                                tags={["Figma", "Prototyping", "User Flows", "Design Systems"]}
-                                pills={["Design", "Creative"]}
-                                postedDate="Jan 28, 2026"
-                                daysLeft={15}
-                                salary="₹12L - ₹18L / Year"
-                            />
+                            <Link href="/jobs/ux-ui-designer">
+                                <JobCard 
+                                    title="UX/UI Designer"
+                                    company="Creative Pulse"
+                                    logoUrl="/logos/3.webp"
+                                    type="Contract"
+                                    location="Remote"
+                                    locationType="Remote"
+                                    experience="1-3 Years"
+                                    tags={["Figma", "Prototyping", "User Flows", "Design Systems"]}
+                                    pills={["Design", "Creative"]}
+                                    postedDate="Jan 28, 2026"
+                                    daysLeft={15}
+                                    salary="₹12L - ₹18L / Year"
+                                />
+                            </Link>
                             
-                            <JobCard 
-                                title="Marketing Specialist"
-                                company="Growth Rocket"
-                                logoUrl="/logos/4.webp"
-                                type="Full Time"
-                                location="Mumbai"
-                                locationType="Hybrid"
-                                experience="0-2 Years"
-                                tags={["Digital Marketing", "SEO", "Content Strategy", "Social Media"]}
-                                pills={["Marketing", "Entry Level"]}
-                                postedDate="Jan 27, 2026"
-                                daysLeft={10}
-                                salary="₹8L - ₹12L / Year"
-                            />
+                            <Link href="/jobs/marketing-specialist">
+                                <JobCard 
+                                    title="Marketing Specialist"
+                                    company="Growth Rocket"
+                                    logoUrl="/logos/4.webp"
+                                    type="Full Time"
+                                    location="Mumbai"
+                                    locationType="Hybrid"
+                                    experience="0-2 Years"
+                                    tags={["Digital Marketing", "SEO", "Content Strategy", "Social Media"]}
+                                    pills={["Marketing", "Entry Level"]}
+                                    postedDate="Jan 27, 2026"
+                                    daysLeft={10}
+                                    salary="₹8L - ₹12L / Year"
+                                />
+                            </Link>
                         </div>
                     </div>
                     

@@ -181,8 +181,9 @@ export const CoursesSection = () => {
                 {/* Courses Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {filteredCourses.map((course) => (
-                        <div 
+                        <Link 
                             key={course.id}
+                            href={`/courses/${course.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                             className="group flex flex-col bg-white rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-brand-200 cursor-pointer h-full"
                         >
                             {/* Thumbnail */}
@@ -239,12 +240,12 @@ export const CoursesSection = () => {
                                         </div>
                                     </div>
                                     
-                                    <button className="h-8 w-8 flex items-center justify-center rounded-full bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+                                    <span className="h-8 w-8 flex items-center justify-center rounded-full bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
                                         <ChevronRight className="w-5 h-5" />
-                                    </button>
+                                    </span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 
