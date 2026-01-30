@@ -3,6 +3,7 @@ import { CodeBrowser, LayersThree01, Palette, CurrencyRupee, Announcement01, Bri
 import { FilterBar } from "@/components/marketing/filter-bar";
 import { JobCard } from "@/components/marketing/job-card";
 import { FeaturedSidebar } from "@/components/marketing/featured-sidebar";
+import { PaginationPageMinimalCenter } from "@/components/application/pagination/pagination";
 
 export default function JobsPage() {
     return (

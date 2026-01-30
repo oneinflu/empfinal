@@ -3,6 +3,7 @@ import { CodeBrowser, Briefcase01, Settings01, Announcement01, Dataflow01, Layer
 import { FilterBar } from "@/components/marketing/filter-bar";
 import { InternshipCard } from "@/components/marketing/internship-card";
 import { FeaturedSidebar } from "@/components/marketing/featured-sidebar";
+import { PaginationPageMinimalCenter } from "@/components/application/pagination/pagination";
 
 export default function InternshipsPage() {
     return (
@@ -83,6 +84,10 @@ export default function InternshipsPage() {
                                 postedDate="Jan 30, 2026"
                                 daysLeft={13}
                             />
+                        </div>
+
+                        <div className="mt-8">
+                             <PaginationPageMinimalCenter total={10} page={1} />
                         </div>
                     </div>
                     

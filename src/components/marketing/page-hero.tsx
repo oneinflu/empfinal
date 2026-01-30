@@ -2,13 +2,14 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { ChevronRight, ArrowLeft, ArrowRight } from "@untitledui/icons";
+import { ArrowLeft, ArrowRight, ChevronRight } from "@untitledui/icons";
 import { cx } from "@/utils/cx";
 
 export interface CategoryItem {
     label: string;
     icon: React.ReactNode;
     href?: string;
+    color?: "blue" | "purple" | "orange" | "green" | "pink" | "yellow" | "red" | "teal";
 }
 
 export interface PageHeroProps {
@@ -18,7 +19,21 @@ export interface PageHeroProps {
     description: string;
     categories: CategoryItem[];
     themeColor?: "blue" | "purple" | "orange" | "green" | "pink" | "yellow";
+    topTag?: React.ReactNode;
+    rightContent?: React.ReactNode;
+    customTitle?: React.ReactNode;
 }
+
+const CATEGORY_COLORS = {
+    blue: "bg-blue-50 text-blue-700 group-hover:bg-blue-100",
+    purple: "bg-purple-50 text-purple-700 group-hover:bg-purple-100",
+    orange: "bg-orange-50 text-orange-700 group-hover:bg-orange-100",
+    green: "bg-green-50 text-green-700 group-hover:bg-green-100",
+    pink: "bg-pink-50 text-pink-700 group-hover:bg-pink-100",
+    yellow: "bg-yellow-50 text-yellow-700 group-hover:bg-yellow-100",
+    red: "bg-red-50 text-red-700 group-hover:bg-red-100",
+    teal: "bg-teal-50 text-teal-700 group-hover:bg-teal-100",
+};
 
 const THEME_STYLES = {
     blue: { text: "text-blue-600", bg: "bg-blue-50", border: "border-blue-100", hover: "group-hover:text-blue-600", iconBg: "group-hover:bg-blue-100" },
@@ -35,7 +50,10 @@ export const PageHero = ({
     titleSuffix = "", 
     description, 
     categories, 
-    themeColor = "blue" 
+    themeColor = "blue",
+    topTag,
+    rightContent,
+    customTitle
 }: PageHeroProps) => {
     const styles = THEME_STYLES[themeColor];
     const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -62,48 +80,43 @@ export const PageHero = ({
     };
 
     return (
-        <section className="bg-white pt-12 pb-16 md:pt-16 md:pb-20">
+        <section className="bg-white pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col items-start gap-6">
-                    {/* Breadcrumb / Back Link (Optional - keeping it simple for now) */}
-                    
-                    {/* Title & Description */}
-                    <div className="max-w-3xl">
-                        <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
-                            {titlePrefix} <span className={styles.text}>{highlightedTitle}</span>{titleSuffix}
-                        </h1>
-                        <p className="text-lg text-gray-500">
-                            {description}
-                        </p>
+                <div className="flex flex-col gap-12">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+                        {/* Left Content */}
+                        <div className="flex flex-col items-start gap-6 max-w-3xl">
+                            {topTag && (
+                                <div className="mb-2">
+                                    {topTag}
+                                </div>
+                            )}
+                            
+                            {/* Title & Description */}
+                            <div>
+                                {customTitle ? customTitle : (
+                                    <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
+                                        {titlePrefix} <span className={styles.text}>{highlightedTitle}</span>{titleSuffix}
+                                    </h1>
+                                )}
+                                <p className="text-lg text-gray-500 max-w-2xl">
+                                    {description}
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Right Content */}
+                        {rightContent && (
+                            <div className="hidden lg:block">
+                                {rightContent}
+                            </div>
+                        )}
                     </div>
 
                     {/* Categories Carousel */}
-                    <div className="relative w-full mt-8">
+                    <div className="relative w-full">
                         {/* Scroll Buttons */}
-                        <div className="hidden md:block">
-                            <button 
-                                onClick={() => scroll("left")}
-                                disabled={!canScrollLeft}
-                                className={cx(
-                                    "absolute -left-5 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full border border-gray-200 bg-white shadow-md transition-all duration-200",
-                                    canScrollLeft ? "opacity-100 hover:bg-gray-50" : "opacity-0 pointer-events-none"
-                                )}
-                            >
-                                <ArrowLeft className="w-5 h-5 text-gray-600" />
-                            </button>
-                            
-                            <button 
-                                onClick={() => scroll("right")}
-                                disabled={!canScrollRight}
-                                className={cx(
-                                    "absolute -right-5 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full border border-gray-200 bg-white shadow-md transition-all duration-200",
-                                    canScrollRight ? "opacity-100 hover:bg-gray-50" : "opacity-0 pointer-events-none"
-                                )}
-                            >
-                                <ArrowRight className="w-5 h-5 text-gray-600" />
-                            </button>
-                        </div>
-
+                      
                         {/* Scrollable Container */}
                         <div 
                             ref={scrollContainerRef}
@@ -114,17 +127,21 @@ export const PageHero = ({
                             {categories.map((cat, idx) => {
                                 const Card = (
                                     <div className={cx(
-                                        "group flex min-w-[140px] flex-col items-center justify-center gap-3 rounded-2xl border border-gray-200 bg-gray-50/50 p-6 transition-all duration-200 hover:border-transparent hover:bg-white hover:shadow-lg cursor-pointer",
-                                        "h-[140px]" // Fixed square-ish shape
+                                        "group flex min-w-[160px] flex-col items-center justify-center gap-3 rounded-2xl border border-transparent p-6 transition-all duration-200 hover:shadow-lg cursor-pointer",
+                                        "h-[140px]",
+                                        cat.color ? CATEGORY_COLORS[cat.color].split(' ')[0] : "bg-gray-50/50 hover:bg-white hover:border-gray-200"
                                     )}>
                                         <div className={cx(
-                                            "flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 transition-colors duration-200",
-                                            styles.hover,
-                                            styles.iconBg
+                                            "flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-200",
+                                            cat.color ? "bg-white/60" : styles.iconBg,
+                                            cat.color ? CATEGORY_COLORS[cat.color].split(' ').slice(1).join(' ') : "text-gray-600"
                                         )}>
                                             {cat.icon}
                                         </div>
-                                        <span className="text-sm font-semibold text-gray-700 group-hover:text-gray-900">
+                                        <span className={cx(
+                                            "text-sm font-semibold group-hover:text-gray-900 text-center",
+                                            cat.color ? "text-gray-800" : "text-gray-700"
+                                        )}>
                                             {cat.label}
                                         </span>
                                     </div>
@@ -141,7 +158,7 @@ export const PageHero = ({
                                 );
                             })}
                             
-                            {/* View All Circle Button at the end of list if needed, or just end the list */}
+                            {/* View All Circle Button */}
                             <div className="flex min-w-[60px] items-center justify-center">
                                 <button 
                                     onClick={() => scroll("right")} 
